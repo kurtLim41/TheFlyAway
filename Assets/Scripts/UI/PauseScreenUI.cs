@@ -17,10 +17,12 @@ public class PauseScreenUI : MonoBehaviour
     public void ShowPauseScreen()
     {
         gameObject.SetActive(true);
+        GameParameters.isPaused = true;
     }
 
     public void HidePauseScreen()
     {
         gameObject.SetActive(false);
+        GameParameters.isPaused = false;
     }
 }

@@ -26,6 +26,10 @@ public class InputHandler : MonoBehaviour
     //reads WAD/Space input and executes command 
     private void Update()
     {
+        if (GameParameters.isPaused)
+        {
+            return;
+        }
         // Horizontal movement 
         if (Input.GetKey(KeyCode.A))
             moveLeftCommand.Execute();
