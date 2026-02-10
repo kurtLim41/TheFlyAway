@@ -11,6 +11,8 @@ public class InputHandler : MonoBehaviour
     private IPlayerCommand stopMoveCommand;
     private IPlayerCommand jumpCommand;
 
+    private bool isPaused;
+    
     private void Awake()
     {
         if (!player)
@@ -23,13 +25,25 @@ public class InputHandler : MonoBehaviour
         jumpCommand      = new JumpCommand(player);
     }
 
+    void OnEnable()
+    {
+        PauseManager.OnPauseChanged += HandlePause;
+    }
+
+    void OnDisable()
+    {
+        PauseManager.OnPauseChanged -= HandlePause;
+    }
+    
     //reads WAD/Space input and executes command 
     private void Update()
     {
-        if (GameParameters.isPaused)
+        // let paused state override input settings for movement
+        if (isPaused)
         {
             return;
         }
+        
         // Horizontal movement 
         if (Input.GetKey(KeyCode.A))
             moveLeftCommand.Execute();
@@ -45,5 +59,10 @@ public class InputHandler : MonoBehaviour
         // Jumpt held state 
         bool jumpHeld = Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.Space);
         player.SetJumpHeld(jumpHeld);
+    }
+
+    private void HandlePause(bool isPaused)
+    {
+        this.isPaused = isPaused;
     }
 }

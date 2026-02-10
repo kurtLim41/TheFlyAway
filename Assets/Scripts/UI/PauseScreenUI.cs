@@ -2,27 +2,26 @@ using UnityEngine;
 
 public class PauseScreenUI : MonoBehaviour
 {
+    [SerializeField] private GameObject panel;
+    
+    void OnEnable()
+    {
+        PauseManager.OnPauseChanged += ToggleScreen;
+    }
+
+    void OnDisable()
+    {
+        PauseManager.OnPauseChanged -= ToggleScreen;
+    }
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        gameObject.SetActive(false);
+        panel.SetActive(false);
     }
-
-    // Update is called once per frame
-    void Update()
+    
+    private void ToggleScreen(bool isPaused)
     {
-        
-    }
-
-    public void ShowPauseScreen()
-    {
-        gameObject.SetActive(true);
-        GameParameters.isPaused = true;
-    }
-
-    public void HidePauseScreen()
-    {
-        gameObject.SetActive(false);
-        GameParameters.isPaused = false;
+        panel.SetActive(isPaused);
     }
 }
