@@ -93,6 +93,14 @@ public class GameFlow : MonoBehaviour
     {
         return Mathf.Max(0, playlist.Count - (currentIndex + 1));
     }
+    
+    public void QuitGame()
+    {
+        Application.Quit();
+        #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;  // works in editor only
+        #endif
+    }
 
     // --- Internals ---
 
