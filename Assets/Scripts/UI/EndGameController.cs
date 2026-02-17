@@ -14,6 +14,6 @@ public class EndGameController : MonoBehaviour
 
     public void QuitGame()
     {
-        Application.Quit();
+        GameFlow.I.QuitGame();
     }
 }

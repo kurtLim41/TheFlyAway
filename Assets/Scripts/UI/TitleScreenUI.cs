@@ -16,6 +16,6 @@ public class TitleScreenUI : MonoBehaviour
 
     public void OnQuitPressed()
     {
-        Application.Quit();
+        GameFlow.I.QuitGame();
     }
 }
