@@ -19,6 +19,11 @@ public class PauseScreenUI : MonoBehaviour
     {
         panel.SetActive(false);
     }
+
+    public void QuitGame()
+    {
+        GameFlow.I.QuitGame();
+    }
     
     private void ToggleScreen(bool isPaused)
     {
