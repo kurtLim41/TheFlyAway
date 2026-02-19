@@ -239,25 +239,27 @@ public class PlayerMovement2D : MonoBehaviour
 
     private void WallJump()
     {
-        // If we just wall-jumped, don't allow immediate re-grab
         _lastWallJumpTime = Time.time;
 
-        // Determine direction to push: away from wall
-        int dir = (_wallDir != 0) ? -_wallDir : (Input.GetAxisRaw("Horizontal") >= 0 ? 1 : -1);
+        int dir;
+        if (_wallDir != 0)
+        {
+            dir = -_wallDir;
+        }
+        else
+        {
+            dir = (_targetX >= 0f) ? 1 : -1;
+        }
 
-        // Vertical component from wallJumpHeight
         float g = Mathf.Abs(Physics2D.gravity.y) * _rb.gravityScale;
         float vy = Mathf.Sqrt(2f * g * Mathf.Max(0.01f, wallJumpHeight));
 
-        // Apply
         _rb.linearVelocity = new Vector2(dir * wallJumpHorizontalSpeed, vy);
 
-        // Consumes one jump (we reset on wall touch already)
         if (_jumpsRemaining > 0) _jumpsRemaining--;
         _lastJumpPressedTime = float.NegativeInfinity;
-        
-        
     }
+
     
     
     // ----- Command pattern entry points -----
