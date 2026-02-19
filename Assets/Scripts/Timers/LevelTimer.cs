@@ -1,9 +1,13 @@
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LevelTimer : MonoBehaviour
 {
     [Tooltip("Set this to 1, 2, 3 depending on which level this is.")]
     public int levelIndex = 1;
+
+    [SerializeField] private Text timerText;
 
     private float _elapsedTime;
     private bool _isRunning = true;
@@ -16,6 +20,7 @@ public class LevelTimer : MonoBehaviour
         if (_isRunning)
         {
             _elapsedTime += Time.deltaTime;
+            UpdateTimerDisplay(_elapsedTime);
         }
     }
 
@@ -32,6 +37,18 @@ public class LevelTimer : MonoBehaviour
 
         // Observer: notify any listeners (HighScoreTimeManager)
         LevelEvents.RaiseLevelCompleted(levelIndex, _elapsedTime);
+    }
+    private void UpdateTimerDisplay(float time)
+    {
+        timerText.text = TimeToString(time);
+    }
+    
+    private string TimeToString(float time)
+    {
+        int minutes = Mathf.FloorToInt(time / 60f);
+        int seconds = Mathf.FloorToInt(time % 60f);
+        string text = $"{minutes:0}:{seconds:00}";
+        return text;
     }
 
 }

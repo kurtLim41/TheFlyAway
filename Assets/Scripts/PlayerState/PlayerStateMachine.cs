@@ -2,21 +2,13 @@ using UnityEngine;
 
 public class PlayerStateMachine : MonoBehaviour
 {
-    public static PlayerStateMachine Instance { get; private set; }
-
     [SerializeField] private PlayerMovement2D playerMovement;
 
     private IPlayerState _currentState;
 
     private void Awake()
     {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(gameObject);
-            return;
-        }
-        Instance = this;
-
+        // No singleton logic — allow multiple players
         if (!playerMovement)
             playerMovement = GetComponent<PlayerMovement2D>();
     }
