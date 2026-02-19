@@ -3,9 +3,9 @@ using UnityEngine.SceneManagement;
 
 public class SceneChanger : MonoBehaviour
 {
-    public void SkipToScene(string sceneName)
+    public void SkipToScene()
     {
-        SceneManager.LoadScene(sceneName);
+        GameFlow.I.LevelCompleted();
     }
 
     public void LoadNextScene()
