@@ -14,6 +14,7 @@ public class LevelTimer : MonoBehaviour
     private bool _submitted;
 
     public float ElapsedTime => _elapsedTime;
+    public float Elapsed { get; set; }
 
     private void Update()
     {
