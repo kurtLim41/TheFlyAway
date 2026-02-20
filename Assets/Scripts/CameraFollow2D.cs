@@ -33,15 +33,16 @@ public class CameraFollow2D : MonoBehaviour
         // Smooth follow
         Vector3 pos = Vector3.SmoothDamp(transform.position, desired, ref _velocity, smoothTime);
 
-        // Clamp to bounds if enabled (account for camera extents)
-        if (clampToBounds && Camera.main != null)
+        var cam = GetComponent<Camera>();
+        if (clampToBounds && cam != null)
         {
-            float vertExtent = Camera.main.orthographicSize;
-            float horzExtent = vertExtent * Camera.main.aspect;
+            float vertExtent = cam.orthographicSize;
+            float horzExtent = vertExtent * cam.aspect;
 
             pos.x = Mathf.Clamp(pos.x, minBounds.x + horzExtent, maxBounds.x - horzExtent);
             pos.y = Mathf.Clamp(pos.y, minBounds.y + vertExtent, maxBounds.y - vertExtent);
         }
+
 
         transform.position = pos;
     }
