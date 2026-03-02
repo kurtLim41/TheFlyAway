@@ -31,7 +31,7 @@ public class ShrinkState : IPlayerState
         timer -= deltaTime;
         if (timer <= 0f)
         {
-            // Gooes back to normal when boost expires
+            // Goes back to normal when boost expires
             ctx.ChangeState(new NormalState());
         }
     }
