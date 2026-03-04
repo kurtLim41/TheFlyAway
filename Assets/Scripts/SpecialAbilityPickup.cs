@@ -1,11 +1,13 @@
 using PlayerState;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public enum Ability{
     Shrink,
     Invincibility,
     SpeedBoost,
     Obstacle,
+    Banana,
     LowGravity
 }
 
@@ -25,14 +27,15 @@ public class SpecialAbilityPickup : MonoBehaviour
         stateMachine = other.GetComponent<PlayerStateMachine>();
         if (stateMachine != null)
         {
-            ChooseStateChange(ability);
+            int pickerId = other.GetComponent<PlayerIdentity>()?.playerId ?? 1;
+            ChooseStateChange(ability, pickerId);
         }
 
         //removes the pickup from the scene
         Destroy(gameObject);
     }
 
-    private void ChooseStateChange(Ability ability)
+    private void ChooseStateChange(Ability ability, int pickerId)
     {
         switch (ability)
         {
@@ -44,6 +47,26 @@ public class SpecialAbilityPickup : MonoBehaviour
                 break;
             case Ability.LowGravity:
                 stateMachine.ChangeState(new LowGravityState(duration, lowGravityScale));
+                break;
+            case Ability.Banana:
+                PlayerIdentity targetIdentity = null;
+                var allPlayers = FindObjectsOfType<PlayerIdentity>();
+                foreach (var p in allPlayers)
+                {
+                    if (p.playerId != pickerId)
+                    {
+                        targetIdentity = p;
+                        break;
+                    }
+                }
+                if (targetIdentity != null)
+                {
+                    var targetStateMachine = targetIdentity.GetComponent<PlayerStateMachine>();
+                    if (targetStateMachine != null)
+                    {
+                        targetStateMachine.ChangeState(new BananaRunState(duration));
+                    }
+                }
                 break;
         }
     }
