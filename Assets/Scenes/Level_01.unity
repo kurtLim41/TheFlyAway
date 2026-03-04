@@ -120293,6 +120293,10 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: 69bb07e660b2a7d4e949a8dc00c0a2c1, type: 2}
   - m_RefCount: 10965
     m_Data: {fileID: 11400000, guid: e88316729e9a72748856c9e3cff087eb, type: 2}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   m_TileSpriteArray:
   - m_RefCount: 267
     m_Data: {fileID: -1766307359, guid: 5fe5454ec8605de43809133b020d1b69, type: 3}
@@ -120304,6 +120308,8 @@ Tilemap:
     m_Data: {fileID: 722760899, guid: 5fe5454ec8605de43809133b020d1b69, type: 3}
   - m_RefCount: 10965
     m_Data: {fileID: -1727392612, guid: 5fe5454ec8605de43809133b020d1b69, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   m_TileMatrixArray:
   - m_RefCount: 11629
     m_Data:
@@ -121821,6 +121827,10 @@ PrefabInstance:
     - target: {fileID: 2149035923619439521, guid: 9c6c4f4340440bd48864c6946f88ed08, type: 3}
       propertyPath: m_Mass
       value: 0.0001
+      objectReference: {fileID: 0}
+    - target: {fileID: 2149035923619439521, guid: 9c6c4f4340440bd48864c6946f88ed08, type: 3}
+      propertyPath: m_BodyType
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2149035923619439521, guid: 9c6c4f4340440bd48864c6946f88ed08, type: 3}
       propertyPath: m_GravityScale
