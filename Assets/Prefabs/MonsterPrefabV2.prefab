@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5449697114983770777}
   - component: {fileID: -2550135483364362936}
   m_Layer: 8
-  m_Name: MonsterPrefab
+  m_Name: MonsterPrefabV2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -83,7 +83,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: af7ddff03b887bb44a59a62b0317c0b6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0b3c18f5959451643bd4e621053fff0f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -155,9 +155,9 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.0019889832, y: -0.01}
-  m_Size: {x: 0.29, y: 0.0001}
-  m_Direction: 0
+  m_Offset: {x: 0.02, y: 0.009999998}
+  m_Size: {x: 0.3, y: 0.23000014}
+  m_Direction: 1
 --- !u!114 &5449697114983770777
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,7 +189,7 @@ Animator:
   m_GameObject: {fileID: 8722363696618275752}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 166071f12f86deb48b533355cbe9c6e5, type: 2}
+  m_Controller: {fileID: 9100000, guid: d2e44ad21fc99b04fa13201bb4bf495d, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
