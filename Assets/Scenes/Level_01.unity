@@ -527,19 +527,19 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5682180146329097732, guid: ba2d2309d4c424f839e6801fdf2cfa97, type: 3}
-      propertyPath: spawnPoints.Array.data[0]
+      propertyPath: 'spawnPoints.Array.data[0]'
       value: 
       objectReference: {fileID: 1847328945}
     - target: {fileID: 5682180146329097732, guid: ba2d2309d4c424f839e6801fdf2cfa97, type: 3}
-      propertyPath: spawnPoints.Array.data[1]
+      propertyPath: 'spawnPoints.Array.data[1]'
       value: 
       objectReference: {fileID: 578038941}
     - target: {fileID: 5682180146329097732, guid: ba2d2309d4c424f839e6801fdf2cfa97, type: 3}
-      propertyPath: spawnPoints.Array.data[2]
+      propertyPath: 'spawnPoints.Array.data[2]'
       value: 
       objectReference: {fileID: 262116351}
     - target: {fileID: 5682180146329097732, guid: ba2d2309d4c424f839e6801fdf2cfa97, type: 3}
-      propertyPath: spawnPoints.Array.data[3]
+      propertyPath: 'spawnPoints.Array.data[3]'
       value: 
       objectReference: {fileID: 49289076}
     m_RemovedComponents:
@@ -873,7 +873,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 46.599976, y: -12.200012}
+  m_AnchoredPosition: {x: 46.599976, y: -12.199982}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &427387345
