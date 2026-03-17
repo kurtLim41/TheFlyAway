@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: a0a94da6e8cc8ed4baf5ca497033e051
+guid: a603bcf4d16ea4e448d2d701f24e5f5e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2169675131438473848
-    second: pausedbg 1_0
+      213: -7668298661493530475
+    second: pausedbg_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,7 +100,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: pausedbg 1_0
+      name: pausedbg_0
       rect:
         serializedVersion: 2
         x: 0
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 872a36f590c3c1e10800000000000000
-      internalID: 2169675131438473848
+      spriteID: 590231aeefab49590800000000000000
+      internalID: -7668298661493530475
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      pausedbg 1_0: 2169675131438473848
+      pausedbg_0: -7668298661493530475
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
