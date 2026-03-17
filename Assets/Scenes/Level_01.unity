@@ -873,7 +873,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 46.599976, y: -12.200012}
+  m_AnchoredPosition: {x: 46.599976, y: -12.199982}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &427387345
@@ -253179,6 +253179,10 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: e88316729e9a72748856c9e3cff087eb, type: 2}
   - m_RefCount: 13521
     m_Data: {fileID: 11400000, guid: 5e2e2801b3d32fa4fa1bd97a9a6c211b, type: 2}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   m_TileSpriteArray:
   - m_RefCount: 260
     m_Data: {fileID: -1766307359, guid: 5fe5454ec8605de43809133b020d1b69, type: 3}
@@ -253192,6 +253196,8 @@ Tilemap:
     m_Data: {fileID: -1727392612, guid: 5fe5454ec8605de43809133b020d1b69, type: 3}
   - m_RefCount: 13521
     m_Data: {fileID: 747311438, guid: 5fe5454ec8605de43809133b020d1b69, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   m_TileMatrixArray:
   - m_RefCount: 24872
     m_Data:
@@ -254879,6 +254885,10 @@ PrefabInstance:
     - target: {fileID: 2149035923619439521, guid: 9c6c4f4340440bd48864c6946f88ed08, type: 3}
       propertyPath: m_Mass
       value: 0.0001
+      objectReference: {fileID: 0}
+    - target: {fileID: 2149035923619439521, guid: 9c6c4f4340440bd48864c6946f88ed08, type: 3}
+      propertyPath: m_BodyType
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2149035923619439521, guid: 9c6c4f4340440bd48864c6946f88ed08, type: 3}
       propertyPath: m_GravityScale
