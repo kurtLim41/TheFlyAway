@@ -3814,6 +3814,14 @@ PrefabInstance:
       propertyPath: spawnPoint
       value: 
       objectReference: {fileID: 1318229558}
+    - target: {fileID: 2549465242792873557, guid: 00e852224fed6b84c9fa720f014bb83f, type: 3}
+      propertyPath: m_Size.y
+      value: 5.008133
+      objectReference: {fileID: 0}
+    - target: {fileID: 2549465242792873557, guid: 00e852224fed6b84c9fa720f014bb83f, type: 3}
+      propertyPath: m_Offset.y
+      value: 2.6241837
+      objectReference: {fileID: 0}
     - target: {fileID: 2774089349002474273, guid: 00e852224fed6b84c9fa720f014bb83f, type: 3}
       propertyPath: m_Name
       value: Player 2
@@ -4969,17 +4977,25 @@ PrefabInstance:
       propertyPath: spawnPoint
       value: 
       objectReference: {fileID: 1071010781}
+    - target: {fileID: 2549465242792873557, guid: 00e852224fed6b84c9fa720f014bb83f, type: 3}
+      propertyPath: m_Size.y
+      value: 5.253235
+      objectReference: {fileID: 0}
+    - target: {fileID: 2549465242792873557, guid: 00e852224fed6b84c9fa720f014bb83f, type: 3}
+      propertyPath: m_Offset.y
+      value: 2.4029388
+      objectReference: {fileID: 0}
     - target: {fileID: 2774089349002474273, guid: 00e852224fed6b84c9fa720f014bb83f, type: 3}
       propertyPath: m_Name
       value: Player 1
       objectReference: {fileID: 0}
     - target: {fileID: 4434826284139763938, guid: 00e852224fed6b84c9fa720f014bb83f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 83.08514
+      value: 99.16
       objectReference: {fileID: 0}
     - target: {fileID: 4434826284139763938, guid: 00e852224fed6b84c9fa720f014bb83f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 137.88295
+      value: 153.54
       objectReference: {fileID: 0}
     - target: {fileID: 4434826284139763938, guid: 00e852224fed6b84c9fa720f014bb83f, type: 3}
       propertyPath: m_LocalPosition.z
