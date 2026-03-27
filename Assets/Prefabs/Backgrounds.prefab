@@ -287,7 +287,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ParallaxController
   cam: {fileID: 0}
   parallaxEffectX: 0.2
-  parallaxEffectY: 0.6
+  parallaxEffectY: 0.7
 --- !u!1 &1326758787744494260
 GameObject:
   m_ObjectHideFlags: 0
@@ -433,7 +433,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ParallaxController
   cam: {fileID: 0}
   parallaxEffectX: 0.4
-  parallaxEffectY: 0.7
+  parallaxEffectY: 0.8
 --- !u!1 &2702521084608641523
 GameObject:
   m_ObjectHideFlags: 0
@@ -631,7 +631,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ParallaxController
   cam: {fileID: 0}
   parallaxEffectX: 0
-  parallaxEffectY: 0.5
+  parallaxEffectY: 0.65
 --- !u!1 &2982505083467847267
 GameObject:
   m_ObjectHideFlags: 0
@@ -829,7 +829,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ParallaxController
   cam: {fileID: 0}
   parallaxEffectX: 0.8
-  parallaxEffectY: 0.9
+  parallaxEffectY: 1
 --- !u!1 &3506357962012475545
 GameObject:
   m_ObjectHideFlags: 0
@@ -937,7 +937,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ParallaxController
   cam: {fileID: 0}
   parallaxEffectX: 0.6
-  parallaxEffectY: 0.8
+  parallaxEffectY: 0.9
 --- !u!1 &3712160476896906335
 GameObject:
   m_ObjectHideFlags: 0
@@ -1963,7 +1963,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ParallaxController
   cam: {fileID: 0}
   parallaxEffectX: 0.4
-  parallaxEffectY: 0.7
+  parallaxEffectY: 0.8
 --- !u!1 &8561937985112338362
 GameObject:
   m_ObjectHideFlags: 0
