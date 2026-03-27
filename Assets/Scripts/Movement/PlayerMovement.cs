@@ -3,6 +3,9 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
 public class PlayerMovement2D : MonoBehaviour
 {
+    public ParticleSystem dust;
+    public ParticleSystem wallDust;
+    
     [Header("Movement")]
     [SerializeField] private float moveSpeed = 12f;
     [SerializeField] private float acceleration = 65f;
@@ -140,8 +143,20 @@ public class PlayerMovement2D : MonoBehaviour
             _lastOnWallTime = Time.time;
         
         // ---- Sprite Flip ----
-        if (_targetX > 0.01f) _sr.flipX = true;
-        else if (_targetX < -0.01f) _sr.flipX = false;
+        if (_targetX > 0.01f)
+        {
+            _sr.flipX = true;
+            Vector3 localPos = wallDust.transform.localPosition;
+            localPos.x = Mathf.Abs(localPos.x); // or Mathf.Abs depending on direction
+            wallDust.transform.localPosition = localPos;
+        }
+        else if (_targetX < -0.01f)
+        {
+            _sr.flipX = false;
+            Vector3 localPos = wallDust.transform.localPosition;
+            localPos.x = -Mathf.Abs(localPos.x); 
+            wallDust.transform.localPosition = localPos;
+        }
 
 
         // --- Buffered / coyote logic + wall logic ---
@@ -154,6 +169,7 @@ public class PlayerMovement2D : MonoBehaviour
             // Ground or coyote jump
             if (_isGrounded || canCoyote)
             {
+                CreateDust();
                 RegularJump(jumpHeight);
             }
             // Wall jump (if on wall or within wall coyote)
@@ -239,6 +255,7 @@ public class PlayerMovement2D : MonoBehaviour
 
     private void WallJump()
     {
+        CreateWallDust();
         _lastWallJumpTime = Time.time;
 
         int dir;
@@ -360,5 +377,14 @@ public class PlayerMovement2D : MonoBehaviour
             Gizmos.DrawWireCube(leftC,  size);
             Gizmos.DrawWireCube(rightC, size);
         }
+    }
+
+    private void CreateDust()
+    {
+        dust.Play();
+    }
+    private void CreateWallDust()
+    {
+        wallDust.Play();
     }
 }
