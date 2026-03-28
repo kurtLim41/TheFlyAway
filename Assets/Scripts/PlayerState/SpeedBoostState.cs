@@ -15,6 +15,7 @@ public class SpeedBoostState : IPlayerState
 
     public void Enter(PlayerStateMachine ctx)
     {
+        ctx.Player.speedFX.Play();
         _timer = _duration;
         ctx.Player.SetMoveSpeedMultiplier(_speedMultiplier);
         Debug.Log("[PlayerState] Enter SpeedBoostState");
@@ -23,6 +24,7 @@ public class SpeedBoostState : IPlayerState
 
     public void Exit(PlayerStateMachine ctx)
     {
+        ctx.Player.speedFX.Stop();
         // Return to base stats
         ctx.Player.ResetStatsToBase();
     }

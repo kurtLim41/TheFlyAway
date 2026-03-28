@@ -5,6 +5,7 @@ public class PlayerMovement2D : MonoBehaviour
 {
     public ParticleSystem dust;
     public ParticleSystem wallDust;
+    public ParticleSystem speedFX;
     
     [Header("Movement")]
     [SerializeField] private float moveSpeed = 12f;
@@ -67,6 +68,7 @@ public class PlayerMovement2D : MonoBehaviour
     private bool _wasGrounded;
     private int  _jumpsRemaining;
     private bool _isJumpHeld;
+    private bool _facingRight = false;
     
     // --- Base copies for state-based abilities --- (used for character states)
     private float _baseMoveSpeed;
@@ -143,21 +145,7 @@ public class PlayerMovement2D : MonoBehaviour
             _lastOnWallTime = Time.time;
         
         // ---- Sprite Flip ----
-        if (_targetX > 0.01f)
-        {
-            _sr.flipX = true;
-            Vector3 localPos = wallDust.transform.localPosition;
-            localPos.x = Mathf.Abs(localPos.x); // or Mathf.Abs depending on direction
-            wallDust.transform.localPosition = localPos;
-        }
-        else if (_targetX < -0.01f)
-        {
-            _sr.flipX = false;
-            Vector3 localPos = wallDust.transform.localPosition;
-            localPos.x = -Mathf.Abs(localPos.x); 
-            wallDust.transform.localPosition = localPos;
-        }
-
+        HandleSpriteFlip(_targetX);
 
         // --- Buffered / coyote logic + wall logic ---
         bool buffered   = (Time.time - _lastJumpPressedTime) <= jumpBufferTime;
@@ -377,6 +365,45 @@ public class PlayerMovement2D : MonoBehaviour
             Gizmos.DrawWireCube(leftC,  size);
             Gizmos.DrawWireCube(rightC, size);
         }
+    }
+    
+    private void HandleSpriteFlip(float targetX)
+    {
+        if (targetX > 0.01f && !_facingRight)
+        {
+            _facingRight = true;
+            _sr.flipX = true;
+            SetWallDustDirection(true);
+            SetMotionBlurDirection(true);
+            CreateDust();
+        }
+        else if (targetX < -0.01f && _facingRight)
+        {
+            _facingRight = false;
+            _sr.flipX = false;
+            SetWallDustDirection(false);
+            SetMotionBlurDirection(false);
+            CreateDust();
+        }
+    }
+    
+    private void SetWallDustDirection(bool facingRight)
+    {
+        Vector3 localPos = wallDust.transform.localPosition;
+
+        if (facingRight)
+            localPos.x = Mathf.Abs(localPos.x);
+        else
+            localPos.x = -Mathf.Abs(localPos.x);
+
+        wallDust.transform.localPosition = localPos;
+    }
+    
+    private void SetMotionBlurDirection(bool facingRight)
+    {
+        Vector3 scale = speedFX.transform.localScale;
+        scale.x = facingRight ? -Mathf.Abs(scale.x) : Mathf.Abs(scale.x);
+        speedFX.transform.localScale = scale;
     }
 
     private void CreateDust()
