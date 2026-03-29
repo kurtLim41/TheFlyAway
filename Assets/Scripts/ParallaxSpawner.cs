@@ -29,7 +29,7 @@ public class ParallaxSpawner : MonoBehaviour
             }
             
             // which layers are visible for each camera
-            cam.cullingMask = LayerMask.GetMask("Default", "ground", "player", "enemy", "hazard", layerName);
+            cam.cullingMask = LayerMask.GetMask("Default", "UI", "ground", "player", "enemy", "hazard", layerName);
         }
     }
     

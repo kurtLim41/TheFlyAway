@@ -177,7 +177,7 @@ MonoBehaviour:
   arriveThreshold: 0.05
   waitAtPoint: 0.1
   startAtClosestPoint: 1
-  spriteRenderer: {fileID: 0}
+  spriteRenderer: {fileID: 4293201458867824738}
   flipSpriteOnX: 1
 --- !u!95 &-2550135483364362936
 Animator:
