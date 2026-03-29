@@ -24,6 +24,7 @@ public class MonsterPatrol : MonoBehaviour
     Vector2 aWorld, bWorld;
     int index = 0;      // 0 = A, 1 = B
     bool waiting = false;
+    private bool isFacingRight = false;
 
     void Awake()
     {
@@ -81,8 +82,16 @@ public class MonsterPatrol : MonoBehaviour
         rb.MovePosition(pos + step);
 
         // Flip sprite visually
-        if (spriteRenderer && flipSpriteOnX && Mathf.Abs(step.x) > 0.0001f)
-            spriteRenderer.flipX = (step.x < 0f);
+        if (!spriteRenderer || !flipSpriteOnX || Mathf.Abs(step.x) < 0.0001f)
+            return;
+
+        bool shouldFaceRight = step.x > 0f;
+
+        if (shouldFaceRight != isFacingRight)
+        {
+            isFacingRight = shouldFaceRight;
+            spriteRenderer.flipX = isFacingRight; // true = right, false = left
+        }
     }
 
     IEnumerator AdvanceAfterWait()
