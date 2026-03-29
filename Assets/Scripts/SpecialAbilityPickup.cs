@@ -6,7 +6,6 @@ public enum Ability{
     Shrink,
     Invincibility,
     SpeedBoost,
-    Obstacle,
     Banana,
     LowGravity
 }
