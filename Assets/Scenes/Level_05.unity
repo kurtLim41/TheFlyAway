@@ -281894,6 +281894,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7a556ad62acd31438ccec8816c3cca6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraFollow2D
+  followTarget: 1
   target: {fileID: 1413795157}
   smoothTime: 0.2
   offset: {x: 0, y: 1.75}
@@ -315404,6 +315405,55 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1707268624080527522, guid: 9c6c4f4340440bd48864c6946f88ed08, type: 3}
   m_PrefabInstance: {fileID: 463884885}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1219239493
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1219239495}
+  - component: {fileID: 1219239494}
+  m_Layer: 0
+  m_Name: AbilitySpawner (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1219239494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1219239493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94dc3d7187591c541814088a3aaa0d89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RandomAbilitySpawner
+  pickupPrefabs:
+  - {fileID: 1057901507}
+  - {fileID: 1057901507}
+  maxPickups: 2
+  respawnDelay: 2
+--- !u!4 &1219239495
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1219239493}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 147, y: 92, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1283601302
 GameObject:
   m_ObjectHideFlags: 0
@@ -414796,6 +414846,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7a556ad62acd31438ccec8816c3cca6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraFollow2D
+  followTarget: 1
   target: {fileID: 1590953835}
   smoothTime: 0.2
   offset: {x: 0, y: 1.75}
@@ -415057,4 +415108,5 @@ SceneRoots:
   - {fileID: 1903632034}
   - {fileID: 432983074}
   - {fileID: 1670633998}
+  - {fileID: 1219239495}
   - {fileID: 796597607}
