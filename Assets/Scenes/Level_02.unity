@@ -571,7 +571,7 @@ PrefabInstance:
     - target: {fileID: 6397249941292456860, guid: 00e852224fed6b84c9fa720f014bb83f, type: 3}
       propertyPath: speedFX
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1021885586}
     - target: {fileID: 6397249941292456860, guid: 00e852224fed6b84c9fa720f014bb83f, type: 3}
       propertyPath: wallDust
       value: 
@@ -3566,6 +3566,14 @@ PrefabInstance:
       propertyPath: wallDust
       value: 
       objectReference: {fileID: 925028773}
+    - target: {fileID: 6939615122455279036, guid: 00e852224fed6b84c9fa720f014bb83f, type: 3}
+      propertyPath: m_Color.b
+      value: 0.5058824
+      objectReference: {fileID: 0}
+    - target: {fileID: 6939615122455279036, guid: 00e852224fed6b84c9fa720f014bb83f, type: 3}
+      propertyPath: m_Color.r
+      value: 0.9019608
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3748,6 +3756,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c6c4f4340440bd48864c6946f88ed08, type: 3}
+--- !u!198 &1021885586 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 2646303360485156683, guid: 00e852224fed6b84c9fa720f014bb83f, type: 3}
+  m_PrefabInstance: {fileID: 97911920}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1024042810 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1707268624080527522, guid: 9c6c4f4340440bd48864c6946f88ed08, type: 3}

@@ -1,3 +1,4 @@
+using Trailer;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
@@ -68,7 +69,7 @@ public class PlayerMovement2D : MonoBehaviour
     private bool _wasGrounded;
     private int  _jumpsRemaining;
     private bool _isJumpHeld;
-    private bool _facingRight = false;
+    private bool _facingRight = true;
     
     // --- Base copies for state-based abilities --- (used for character states)
     private float _baseMoveSpeed;
@@ -124,6 +125,8 @@ public class PlayerMovement2D : MonoBehaviour
 
     private void Update()
     {
+        if (TrailerMode.IsActive) return;
+        
         // --- Ground check ---
         Vector2 boxCenter = groundCheck ? (Vector2)groundCheck.position
                                         : (Vector2)transform.position + new Vector2(0f, -0.51f);
@@ -178,6 +181,8 @@ public class PlayerMovement2D : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (TrailerMode.IsActive) return;
+        
         // Horizontal accel/decel with extra ground braking
         float desired = _targetX * moveSpeed;
         float current = _rb.linearVelocity.x;
@@ -372,16 +377,18 @@ public class PlayerMovement2D : MonoBehaviour
         if (targetX > 0.01f && !_facingRight)
         {
             _facingRight = true;
-            _sr.flipX = true;
+            _sr.flipX = false;
             SetWallDustDirection(true);
+            SetDustDirection(true);
             SetMotionBlurDirection(true);
             CreateDust();
         }
         else if (targetX < -0.01f && _facingRight)
         {
             _facingRight = false;
-            _sr.flipX = false;
+            _sr.flipX = true;
             SetWallDustDirection(false);
+            SetDustDirection(false);
             SetMotionBlurDirection(false);
             CreateDust();
         }
@@ -399,10 +406,22 @@ public class PlayerMovement2D : MonoBehaviour
         wallDust.transform.localPosition = localPos;
     }
     
+    private void SetDustDirection(bool facingRight)
+    {
+        Vector3 localPos = dust.transform.localPosition;
+
+        if (facingRight)
+            localPos.x = -Mathf.Abs(localPos.x);
+        else
+            localPos.x = Mathf.Abs(localPos.x);
+
+        dust.transform.localPosition = localPos;
+    }
+    
     private void SetMotionBlurDirection(bool facingRight)
     {
         Vector3 scale = speedFX.transform.localScale;
-        scale.x = facingRight ? -Mathf.Abs(scale.x) : Mathf.Abs(scale.x);
+        scale.x = facingRight ? Mathf.Abs(scale.x) : -Mathf.Abs(scale.x);
         speedFX.transform.localScale = scale;
     }
 
