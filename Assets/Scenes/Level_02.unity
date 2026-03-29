@@ -514,17 +514,37 @@ PrefabInstance:
       propertyPath: spawnPoint
       value: 
       objectReference: {fileID: 1071010781}
+    - target: {fileID: 1781344269377352405, guid: 00e852224fed6b84c9fa720f014bb83f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.58
+      objectReference: {fileID: 0}
+    - target: {fileID: 2549465242792873557, guid: 00e852224fed6b84c9fa720f014bb83f, type: 3}
+      propertyPath: m_Size.x
+      value: 3.807724
+      objectReference: {fileID: 0}
+    - target: {fileID: 2549465242792873557, guid: 00e852224fed6b84c9fa720f014bb83f, type: 3}
+      propertyPath: m_Size.y
+      value: 5.5678844
+      objectReference: {fileID: 0}
+    - target: {fileID: 2549465242792873557, guid: 00e852224fed6b84c9fa720f014bb83f, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.019187927
+      objectReference: {fileID: 0}
+    - target: {fileID: 2549465242792873557, guid: 00e852224fed6b84c9fa720f014bb83f, type: 3}
+      propertyPath: m_Offset.y
+      value: 3.0145063
+      objectReference: {fileID: 0}
     - target: {fileID: 2774089349002474273, guid: 00e852224fed6b84c9fa720f014bb83f, type: 3}
       propertyPath: m_Name
       value: Player 1
       objectReference: {fileID: 0}
     - target: {fileID: 4434826284139763938, guid: 00e852224fed6b84c9fa720f014bb83f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 30.645
+      value: 29.77
       objectReference: {fileID: 0}
     - target: {fileID: 4434826284139763938, guid: 00e852224fed6b84c9fa720f014bb83f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 20.36
+      value: 16.3
       objectReference: {fileID: 0}
     - target: {fileID: 4434826284139763938, guid: 00e852224fed6b84c9fa720f014bb83f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3441,6 +3461,22 @@ PrefabInstance:
       propertyPath: spawnPoint
       value: 
       objectReference: {fileID: 63568685}
+    - target: {fileID: 2549465242792873557, guid: 00e852224fed6b84c9fa720f014bb83f, type: 3}
+      propertyPath: m_Size.x
+      value: 3.9814796
+      objectReference: {fileID: 0}
+    - target: {fileID: 2549465242792873557, guid: 00e852224fed6b84c9fa720f014bb83f, type: 3}
+      propertyPath: m_Size.y
+      value: 5.4025497
+      objectReference: {fileID: 0}
+    - target: {fileID: 2549465242792873557, guid: 00e852224fed6b84c9fa720f014bb83f, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.05510521
+      objectReference: {fileID: 0}
+    - target: {fileID: 2549465242792873557, guid: 00e852224fed6b84c9fa720f014bb83f, type: 3}
+      propertyPath: m_Offset.y
+      value: 3.0275269
+      objectReference: {fileID: 0}
     - target: {fileID: 2774089349002474273, guid: 00e852224fed6b84c9fa720f014bb83f, type: 3}
       propertyPath: m_Name
       value: Player 2

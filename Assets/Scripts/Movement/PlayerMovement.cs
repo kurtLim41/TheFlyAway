@@ -218,8 +218,8 @@ public class PlayerMovement2D : MonoBehaviour
 
         _anim.SetFloat("Speed", speed);
         _anim.SetBool("IsGrounded", _isGrounded);
-        _anim.SetFloat("YVelocity", yVel);
-        _anim.SetBool("IsWallSlide", isWallSliding);
+        _anim.SetFloat("VerticalVelocity", yVel);
+        _anim.SetBool("IsWallClimbing", isWallSliding);
         
     }
 
