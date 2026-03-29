@@ -13,18 +13,18 @@ public class RandomAbilitySpawner : MonoBehaviour
     [Tooltip("Seconds between a pickup being collected and the next one spawning.")]
     [SerializeField] private float respawnDelay = 2f;
 
-    private int _pickupsRemaining;
-    private GameObject _currentPickupGO;
+    private int pickupsSpawnedSoFar;
+    private GameObject _currentPickup;
 
     private void Start()
     {
-        _pickupsRemaining = maxPickups;
+        pickupsSpawnedSoFar = maxPickups;
         SpawnPickup();
     }
 
     private void SpawnPickup()
     {
-        if (_pickupsRemaining <= 0)
+        if (pickupsSpawnedSoFar <= 0)
         {
             Destroy(gameObject);
             return;
@@ -32,7 +32,7 @@ public class RandomAbilitySpawner : MonoBehaviour
 
         if (pickupPrefabs == null || pickupPrefabs.Length == 0)
         {
-            Debug.LogError("[RandomAbilitySpawner] No prefabs in pool! Add prefabs to the Pickup Prefabs list.", this);
+            Debug.LogError("[RandomAbilitySpawner] No pickup prefabs assigned", this);
             return;
         }
 
@@ -43,22 +43,33 @@ public class RandomAbilitySpawner : MonoBehaviour
             Debug.LogError("[RandomAbilitySpawner] A null entry is in the prefab pool.", this);
             return;
         }
+        
+        _currentPickup = Instantiate(chosen, transform.position, Quaternion.identity, transform);
+        
+        var watcher = _currentPickup.GetComponent<PickupCollectedWatcher>();
+        if (watcher == null)
+        {
+            watcher = _currentPickup.AddComponent<PickupCollectedWatcher>();
+        }
 
-        _currentPickupGO = Instantiate(chosen, transform.position, Quaternion.identity);
-
-        var watcher = _currentPickupGO.AddComponent<PickupCollectedWatcher>();
+        watcher.OnCollected -= HandlePickupCollected;
         watcher.OnCollected += HandlePickupCollected;
-
-        Debug.Log($"[RandomAbilitySpawner] Spawned '{chosen.name}'. Collections remaining: {_pickupsRemaining}");
+        
     }
 
     private void HandlePickupCollected()
     {
-        _pickupsRemaining--;
-
-        if (_pickupsRemaining <= 0)
+        if (_currentPickup != null)
         {
-            Destroy(gameObject); // done for this level
+            Destroy(_currentPickup);
+            _currentPickup = null; // done for this level
+        }
+        
+        pickupsSpawnedSoFar--;
+        
+        if (pickupsSpawnedSoFar <= 0)
+        {
+            Destroy(gameObject);
         }
         else
         {
@@ -68,8 +79,10 @@ public class RandomAbilitySpawner : MonoBehaviour
 
     private void OnDestroy()
     {
-        if (_currentPickupGO != null)
-            Destroy(_currentPickupGO);
+        if (_currentPickup != null)
+        {
+            Destroy(_currentPickup);
+        }
     }
 
 #if UNITY_EDITOR
