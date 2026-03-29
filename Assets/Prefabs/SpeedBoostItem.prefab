@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1874120918240991107}
   - component: {fileID: 3060969488348143647}
   - component: {fileID: 2809455423652783489}
-  - component: {fileID: -8883946437276814567}
+  - component: {fileID: -3088699295751091708}
   m_Layer: 0
   m_Name: SpeedBoostItem
   m_TagString: Untagged
@@ -138,7 +138,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 2.257721, y: 2.488678}
   m_EdgeRadius: 0
---- !u!114 &-8883946437276814567
+--- !u!114 &-3088699295751091708
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -147,9 +147,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 9173562052909527987}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 662481b3355c21d4288509137c45b2d2, type: 3}
+  m_Script: {fileID: 11500000, guid: ef40469c7656d4253aa2a61ceb1f550f, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SpeedBoostPickup
+  m_EditorClassIdentifier: Assembly-CSharp::SpecialAbilityPickup
+  ability: 2
   duration: 10
-  speedMultiplier: 1.5
-  extraJumps: 0
+  shrinkScale: {x: 0.5, y: 0.5, z: 0.5}
+  lowGravityScale: 0.5
+  speedBooster: 1.5

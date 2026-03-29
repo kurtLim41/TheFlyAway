@@ -1,13 +1,8 @@
-using Trailer;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
 public class PlayerMovement2D : MonoBehaviour
 {
-    public ParticleSystem dust;
-    public ParticleSystem wallDust;
-    public ParticleSystem speedFX;
-    
     [Header("Movement")]
     [SerializeField] private float moveSpeed = 12f;
     [SerializeField] private float acceleration = 65f;
@@ -69,7 +64,6 @@ public class PlayerMovement2D : MonoBehaviour
     private bool _wasGrounded;
     private int  _jumpsRemaining;
     private bool _isJumpHeld;
-    private bool _facingRight = true;
     
     // --- Base copies for state-based abilities --- (used for character states)
     private float _baseMoveSpeed;
@@ -125,8 +119,6 @@ public class PlayerMovement2D : MonoBehaviour
 
     private void Update()
     {
-        if (TrailerMode.IsActive) return;
-        
         // --- Ground check ---
         Vector2 boxCenter = groundCheck ? (Vector2)groundCheck.position
                                         : (Vector2)transform.position + new Vector2(0f, -0.51f);
@@ -148,7 +140,9 @@ public class PlayerMovement2D : MonoBehaviour
             _lastOnWallTime = Time.time;
         
         // ---- Sprite Flip ----
-        HandleSpriteFlip(_targetX);
+        if (_targetX > 0.01f) _sr.flipX = true;
+        else if (_targetX < -0.01f) _sr.flipX = false;
+
 
         // --- Buffered / coyote logic + wall logic ---
         bool buffered   = (Time.time - _lastJumpPressedTime) <= jumpBufferTime;
@@ -160,7 +154,6 @@ public class PlayerMovement2D : MonoBehaviour
             // Ground or coyote jump
             if (_isGrounded || canCoyote)
             {
-                CreateDust();
                 RegularJump(jumpHeight);
             }
             // Wall jump (if on wall or within wall coyote)
@@ -181,8 +174,6 @@ public class PlayerMovement2D : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (TrailerMode.IsActive) return;
-        
         // Horizontal accel/decel with extra ground braking
         float desired = _targetX * moveSpeed;
         float current = _rb.linearVelocity.x;
@@ -227,8 +218,8 @@ public class PlayerMovement2D : MonoBehaviour
 
         _anim.SetFloat("Speed", speed);
         _anim.SetBool("IsGrounded", _isGrounded);
-        _anim.SetFloat("YVelocity", yVel);
-        _anim.SetBool("IsWallSlide", isWallSliding);
+        _anim.SetFloat("VerticalVelocity", yVel);
+        _anim.SetBool("IsWallClimbing", isWallSliding);
         
     }
 
@@ -248,7 +239,6 @@ public class PlayerMovement2D : MonoBehaviour
 
     private void WallJump()
     {
-        CreateWallDust();
         _lastWallJumpTime = Time.time;
 
         int dir;
@@ -371,67 +361,5 @@ public class PlayerMovement2D : MonoBehaviour
             Gizmos.DrawWireCube(leftC,  size);
             Gizmos.DrawWireCube(rightC, size);
         }
-    }
-    
-    private void HandleSpriteFlip(float targetX)
-    {
-        if (targetX > 0.01f && !_facingRight)
-        {
-            _facingRight = true;
-            _sr.flipX = false;
-            SetWallDustDirection(true);
-            SetDustDirection(true);
-            SetMotionBlurDirection(true);
-            CreateDust();
-        }
-        else if (targetX < -0.01f && _facingRight)
-        {
-            _facingRight = false;
-            _sr.flipX = true;
-            SetWallDustDirection(false);
-            SetDustDirection(false);
-            SetMotionBlurDirection(false);
-            CreateDust();
-        }
-    }
-    
-    private void SetWallDustDirection(bool facingRight)
-    {
-        Vector3 localPos = wallDust.transform.localPosition;
-
-        if (facingRight)
-            localPos.x = Mathf.Abs(localPos.x);
-        else
-            localPos.x = -Mathf.Abs(localPos.x);
-
-        wallDust.transform.localPosition = localPos;
-    }
-    
-    private void SetDustDirection(bool facingRight)
-    {
-        Vector3 localPos = dust.transform.localPosition;
-
-        if (facingRight)
-            localPos.x = -Mathf.Abs(localPos.x);
-        else
-            localPos.x = Mathf.Abs(localPos.x);
-
-        dust.transform.localPosition = localPos;
-    }
-    
-    private void SetMotionBlurDirection(bool facingRight)
-    {
-        Vector3 scale = speedFX.transform.localScale;
-        scale.x = facingRight ? Mathf.Abs(scale.x) : -Mathf.Abs(scale.x);
-        speedFX.transform.localScale = scale;
-    }
-
-    private void CreateDust()
-    {
-        dust.Play();
-    }
-    private void CreateWallDust()
-    {
-        wallDust.Play();
     }
 }
