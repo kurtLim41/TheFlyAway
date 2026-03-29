@@ -17,6 +17,7 @@ public class SpecialAbilityPickup : MonoBehaviour
     [SerializeField] private float duration = 10f;
     [SerializeField] private Vector3 shrinkScale = new Vector3(0.5f, 0.5f, 0.5f);
     [SerializeField] private float lowGravityScale = 0.5f;
+    [SerializeField] private float speedBooster = 1.5f;
     
     private PlayerStateMachine stateMachine;
     private void OnTriggerEnter2D(Collider2D other)
@@ -43,6 +44,9 @@ public class SpecialAbilityPickup : MonoBehaviour
                 break;
             case Ability.Invincibility:
                 stateMachine.ChangeState(new InvincibilityState(duration));
+                break;
+            case Ability.SpeedBoost:
+                stateMachine.ChangeState(new SpeedBoostState(duration, speedBooster));
                 break;
             case Ability.LowGravity:
                 stateMachine.ChangeState(new LowGravityState(duration, lowGravityScale));
