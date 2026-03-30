@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class CameraFollow2D : MonoBehaviour
 {
+    public bool followTarget = true;
+    
     [Header("Target")]
     public Transform target;
 
@@ -21,7 +23,7 @@ public class CameraFollow2D : MonoBehaviour
 
     void LateUpdate()
     {
-        if (!target) return;
+        if (!target || !followTarget) return;
 
         // Desired camera pos (keep current Z)
         Vector3 desired = new Vector3(
@@ -45,5 +47,11 @@ public class CameraFollow2D : MonoBehaviour
 
 
         transform.position = pos;
+    }
+    
+    // Helper method to toggle follow
+    public void SetFollow(bool follow)
+    {
+        followTarget = follow;
     }
 }
