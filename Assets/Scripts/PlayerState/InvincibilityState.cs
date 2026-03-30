@@ -7,6 +7,7 @@ namespace PlayerState
     {
         private float duration;
         private float timer;
+        private Color color;
 
         public InvincibilityState(float duration)
         {
@@ -16,6 +17,7 @@ namespace PlayerState
         {
             timer = duration;
             
+            color = ctx.GetComponent<SpriteRenderer>().color;
             ctx.GetComponent<SpriteRenderer>().color = Color.deepPink;
             
             Physics2D.IgnoreLayerCollision(
@@ -33,7 +35,7 @@ namespace PlayerState
 
         public void Exit(PlayerStateMachine ctx)
         {
-            ctx.GetComponent<SpriteRenderer>().color = Color.white;
+            ctx.GetComponent<SpriteRenderer>().color = color;
             
             Physics2D.IgnoreLayerCollision(
                 LayerMask.NameToLayer("player"),

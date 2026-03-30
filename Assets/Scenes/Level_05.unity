@@ -312566,11 +312566,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2999845802037255725, guid: a99f6c908a7a2483d86180d72a4d8319, type: 3}
       propertyPath: maxPickups
-      value: 10
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2999845802037255725, guid: a99f6c908a7a2483d86180d72a4d8319, type: 3}
       propertyPath: respawnDelay
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3828625639085008357, guid: a99f6c908a7a2483d86180d72a4d8319, type: 3}
       propertyPath: m_LocalPosition.x
@@ -312776,6 +312776,10 @@ PrefabInstance:
     - target: {fileID: 2999845802037255725, guid: a99f6c908a7a2483d86180d72a4d8319, type: 3}
       propertyPath: maxPickups
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2999845802037255725, guid: a99f6c908a7a2483d86180d72a4d8319, type: 3}
+      propertyPath: respawnDelay
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3828625639085008357, guid: a99f6c908a7a2483d86180d72a4d8319, type: 3}
       propertyPath: m_LocalPosition.x
@@ -345714,6 +345718,10 @@ PrefabInstance:
     - target: {fileID: 2999845802037255725, guid: a99f6c908a7a2483d86180d72a4d8319, type: 3}
       propertyPath: maxPickups
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2999845802037255725, guid: a99f6c908a7a2483d86180d72a4d8319, type: 3}
+      propertyPath: respawnDelay
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3828625639085008357, guid: a99f6c908a7a2483d86180d72a4d8319, type: 3}
       propertyPath: m_LocalPosition.x
