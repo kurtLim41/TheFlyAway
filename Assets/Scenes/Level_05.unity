@@ -281895,6 +281895,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7a556ad62acd31438ccec8816c3cca6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraFollow2D
+  followTarget: 1
   target: {fileID: 1413795157}
   smoothTime: 0.2
   offset: {x: 0, y: 1.75}
@@ -312502,7 +312503,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_TargetDisplay: 0
 --- !u!224 &432983074
 RectTransform:
@@ -312534,6 +312535,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2999845802037255725, guid: a99f6c908a7a2483d86180d72a4d8319, type: 3}
+      propertyPath: maxPickups
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 3828625639085008357, guid: a99f6c908a7a2483d86180d72a4d8319, type: 3}
       propertyPath: m_LocalPosition.x
       value: 81.21675
@@ -312735,6 +312740,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2999845802037255725, guid: a99f6c908a7a2483d86180d72a4d8319, type: 3}
+      propertyPath: maxPickups
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 3828625639085008357, guid: a99f6c908a7a2483d86180d72a4d8319, type: 3}
       propertyPath: m_LocalPosition.x
       value: 298.21674
@@ -345660,6 +345669,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2999845802037255725, guid: a99f6c908a7a2483d86180d72a4d8319, type: 3}
+      propertyPath: maxPickups
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 3828625639085008357, guid: a99f6c908a7a2483d86180d72a4d8319, type: 3}
       propertyPath: m_LocalPosition.x
       value: 149.21675
@@ -444509,6 +444522,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7a556ad62acd31438ccec8816c3cca6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraFollow2D
+  followTarget: 1
   target: {fileID: 1590953835}
   smoothTime: 0.2
   offset: {x: 0, y: 1.75}

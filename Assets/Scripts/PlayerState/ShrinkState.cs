@@ -15,9 +15,19 @@ public class ShrinkState : IPlayerState
     public void Enter(PlayerStateMachine ctx)
     {
         timer = duration;
-        // Save the original scale to restore later
+
+        // Save original scale
         originalScale = ctx.transform.localScale;
-        ctx.transform.localScale = shrinkScale;
+
+        // Keep the current facing direction by preserving the X sign
+        float xSign = Mathf.Sign(originalScale.x);
+        if (xSign == 0f) xSign = 1f;
+
+        ctx.transform.localScale = new Vector3(
+            Mathf.Abs(shrinkScale.x) * xSign,
+            Mathf.Abs(shrinkScale.y),
+            Mathf.Abs(shrinkScale.z)
+        );
     }
 
     public void Exit(PlayerStateMachine ctx)
