@@ -151,10 +151,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef40469c7656d4253aa2a61ceb1f550f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpecialAbilityPickup
-  ability: 4
+  ability: 3
   duration: 3
   shrinkScale: {x: 0.5, y: 0.5, z: 0.5}
   lowGravityScale: 0.5
+  speedBooster: 1.5
 --- !u!95 &6687161085434583665
 Animator:
   serializedVersion: 7
