@@ -5,7 +5,9 @@ public class PlayerRespawn : MonoBehaviour
 {
     [Header("Spawn")]
     public Transform spawnPoint;
-
+        public DamageFlashUI myScreenFlash; 
+        public CameraShake myCameraShake; // <-- Add this new line!
+        
     Rigidbody2D rb;
     Collider2D col;
 

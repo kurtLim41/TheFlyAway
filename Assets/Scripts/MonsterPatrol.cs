@@ -4,25 +4,22 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class MonsterPatrol : MonoBehaviour
 {
-    [Header("Two-Point (A <-> B)")]
-    public bool useLocalOffsets = true;
+    [Header("Two-Point (A <-> B)")] public bool useLocalOffsets = true;
     public Vector2 pointA = new Vector2(-2f, 0f);
-    public Vector2 pointB = new Vector2( 2f, 0f);
+    public Vector2 pointB = new Vector2(2f, 0f);
 
-    [Header("Movement")]
-    public float speed = 2.5f;
-    public float arriveThreshold = 0.08f;   // a hair bigger helps avoid jitter
+    [Header("Movement")] public float speed = 2.5f;
+    public float arriveThreshold = 0.08f; // a hair bigger helps avoid jitter
     public float waitAtPoint = 0.1f;
     public bool startAtClosestPoint = true; // NEW: pick A/B based on spawn position
 
-    [Header("Visuals")]
-    public SpriteRenderer spriteRenderer;
+    [Header("Visuals")] public SpriteRenderer spriteRenderer;
     public bool flipSpriteOnX = true;
 
     Rigidbody2D rb;
     Vector2 startPos;
     Vector2 aWorld, bWorld;
-    int index = 0;      // 0 = A, 1 = B
+    int index = 0; // 0 = A, 1 = B
     bool waiting = false;
     private bool isFacingRight = false;
 
@@ -72,7 +69,7 @@ public class MonsterPatrol : MonoBehaviour
         if (toTarget.sqrMagnitude <= arriveThreshold * arriveThreshold)
         {
             rb.linearVelocity = new Vector2(0f, rb.linearVelocity.y);
-            rb.MovePosition(target);                  // snap exactly to the point
+            rb.MovePosition(target); // snap exactly to the point
             StartCoroutine(AdvanceAfterWait());
             return;
         }
@@ -109,12 +106,29 @@ public class MonsterPatrol : MonoBehaviour
         if (index < 0 || index > 1) index = 0;
     }
 
+    // --- THIS IS THE PART THAT WAS FIXED ---
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.CompareTag("Player"))
         {
             var respawn = collision.collider.GetComponent<PlayerRespawn>();
-            if (respawn) respawn.KillAndRespawn();
+            if (respawn)
+            {
+                // 1. Shake THIS specific player's Camera
+                if (respawn.myCameraShake != null)
+                {
+                    respawn.myCameraShake.TriggerShake(0.2f, 0.4f);
+                }
+
+                // 2. Flash THIS specific player's screen!
+                if (respawn.myScreenFlash != null)
+                {
+                    respawn.myScreenFlash.FlashScreen();
+                }
+
+                // 3. Kill and respawn the player
+                respawn.KillAndRespawn();
+            }
         }
     }
 
