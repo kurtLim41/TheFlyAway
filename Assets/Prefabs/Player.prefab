@@ -257,6 +257,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerRespawn
   spawnPoint: {fileID: 0}
+  myScreenFlash: {fileID: 0}
+  myCameraShake: {fileID: 0}
 --- !u!95 &5391649507902631616
 Animator:
   serializedVersion: 7
@@ -306,6 +308,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerStateMachine
   playerMovement: {fileID: 0}
+  LayerName: player1
 --- !u!114 &1008727081733793725
 MonoBehaviour:
   m_ObjectHideFlags: 0
