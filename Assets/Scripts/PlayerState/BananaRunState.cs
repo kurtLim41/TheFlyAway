@@ -5,6 +5,7 @@ public class BananaRunState : IPlayerState
     private float duration;
     private float timer;
     private float slowMultiplier = 0.4f;
+    private Color color;
 
     public BananaRunState(float duration)
     {
@@ -14,6 +15,8 @@ public class BananaRunState : IPlayerState
     public void Enter(PlayerStateMachine ctx)
     {
         timer = duration;
+        color = ctx.GetComponent<SpriteRenderer>().color;
+        ctx.GetComponent<SpriteRenderer>().color = Color.lawnGreen;
         ctx.Player.SetMoveSpeedMultiplier(slowMultiplier);
         
         Debug.Log("Banana slip applied");
@@ -21,6 +24,7 @@ public class BananaRunState : IPlayerState
 
     public void Exit(PlayerStateMachine ctx)
     {
+        ctx.GetComponent<SpriteRenderer>().color = color;
         ctx.Player.ResetStatsToBase();
     }
 
