@@ -1,3 +1,4 @@
+using System;
 using Trailer;
 using UnityEngine;
 
@@ -128,9 +129,19 @@ public class PlayerMovement2D : MonoBehaviour
         if (TrailerMode.IsActive) return;
         
         // --- Ground check ---
-        Vector2 boxCenter = groundCheck ? (Vector2)groundCheck.position
-                                        : (Vector2)transform.position + new Vector2(0f, -0.51f);
-        _isGrounded = Physics2D.OverlapBox(boxCenter, groundCheckSize, 0f, groundLayer);
+        float scaleFactor = Mathf.Abs(transform.localScale.y);
+        Vector2 scaledSize = groundCheckSize * scaleFactor;
+        
+        Vector2 boxCenter = groundCheck 
+            ? (Vector2)groundCheck.position
+            : (Vector2)transform.position + new Vector2(0f, -0.51f * scaleFactor);
+
+        _isGrounded = Physics2D.OverlapBox(boxCenter, scaledSize, 0f, groundLayer);
+        
+        // Vector2 boxCenter = groundCheck ? (Vector2)groundCheck.position
+        //                                 : (Vector2)transform.position + new Vector2(0f, -0.51f);
+        
+        // _isGrounded = Physics2D.OverlapBox(boxCenter, groundCheckSize, 0f, groundLayer);
 
         if (_isGrounded && !_wasGrounded)
             _jumpsRemaining = Mathf.Max(1, totalJumps); // reset on landing

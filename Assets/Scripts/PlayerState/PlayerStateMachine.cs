@@ -1,8 +1,10 @@
+using System;
 using UnityEngine;
 
 public class PlayerStateMachine : MonoBehaviour
 {
     [SerializeField] private PlayerMovement2D playerMovement;
+    public string LayerName;
 
     private IPlayerState _currentState;
 
@@ -28,6 +30,11 @@ public class PlayerStateMachine : MonoBehaviour
         _currentState?.Exit(this);
         _currentState = newState;
         _currentState.Enter(this);
+    }
+
+    public void OnDestroy()
+    {
+        _currentState?.Exit(this);
     }
 
     public PlayerMovement2D Player => playerMovement;
