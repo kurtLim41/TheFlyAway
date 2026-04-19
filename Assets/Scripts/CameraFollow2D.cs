@@ -7,6 +7,9 @@ public class CameraFollow2D : MonoBehaviour
     [Header("Target")]
     public Transform target;
 
+    [Tooltip("The id of the player you want the camera to follow")]
+    [Range(1, 2)] public int playerId = 1;
+
     [Header("Follow")]
     [Tooltip("How quickly the camera reaches the target position (0 = instant).")]
     public float smoothTime = 0.15f;

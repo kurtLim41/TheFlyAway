@@ -12,11 +12,15 @@ public class PlayerRespawn : MonoBehaviour
         
     Rigidbody2D rb;
     Collider2D col;
+    
+    private int id;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         col = GetComponent<Collider2D>();
+        id = GetComponent<PlayerIdentity>().playerId;
+        
         if (spawnPoint == null)
             Debug.LogWarning("PlayerRespawn: spawnPoint not set. Assign your SpawnPoint transform.");
     }
@@ -70,9 +74,14 @@ public class PlayerRespawn : MonoBehaviour
     
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        SpawnPoint[] spawns = FindObjectsByType<SpawnPoint>(FindObjectsSortMode.None);
-        int id = GetComponent<PlayerIdentity>().playerId;
+        SetSpawnPoint();
+        SetCameraFollow();
+    }
 
+    private void SetSpawnPoint()
+    {
+        SpawnPoint[] spawns = FindObjectsByType<SpawnPoint>(FindObjectsSortMode.None);
+        
         if (spawns.Length > 0)
         {
             foreach (var spawn in spawns)
@@ -81,6 +90,23 @@ public class PlayerRespawn : MonoBehaviour
                 {
                     spawnPoint = spawn.transform;
                     Respawn();
+                    break;
+                }
+            }
+        }
+    }
+
+    private void SetCameraFollow()
+    {
+        CameraFollow2D[] cams = FindObjectsByType<CameraFollow2D>(FindObjectsSortMode.None);
+
+        if (cams.Length > 0)
+        {
+            foreach (var cam in cams)
+            {
+                if (cam.playerId == id)
+                {
+                    cam.target = transform;
                     break;
                 }
             }

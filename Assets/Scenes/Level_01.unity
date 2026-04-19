@@ -284110,6 +284110,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CameraFollow2D
   followTarget: 1
   target: {fileID: 4434826284959502791}
+  playerId: 2
   smoothTime: 0.2
   offset: {x: 0, y: 1.75}
   clampToBounds: 0
@@ -285321,6 +285322,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CameraFollow2D
   followTarget: 1
   target: {fileID: 2118270072}
+  playerId: 1
   smoothTime: 0.2
   offset: {x: 0, y: 1.75}
   clampToBounds: 0
