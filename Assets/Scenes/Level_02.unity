@@ -366,6 +366,7 @@ GameObject:
   m_Component:
   - component: {fileID: 63568685}
   - component: {fileID: 63568686}
+  - component: {fileID: 63568687}
   m_Layer: 0
   m_Name: SpawnPoint_Player2
   m_TagString: Untagged
@@ -446,6 +447,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &63568687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 63568684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7424261d0fa064d1a904427fe10c6bc4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpawnPoint
+  playerId: 2
 --- !u!198 &90248281 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 5751084845341861922, guid: 00e852224fed6b84c9fa720f014bb83f, type: 3}
@@ -534,7 +548,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2774089349002474273, guid: 00e852224fed6b84c9fa720f014bb83f, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4434826284139763938, guid: 00e852224fed6b84c9fa720f014bb83f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3685,6 +3699,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player 2
       objectReference: {fileID: 0}
+    - target: {fileID: 3119999810573141713, guid: 0ca95e9dbe61f45b5955cb53b5767214, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7412640623350756955, guid: 0ca95e9dbe61f45b5955cb53b5767214, type: 3}
       propertyPath: m_Color.b
       value: 0.5058824
@@ -4050,6 +4068,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1071010781}
   - component: {fileID: 1071010782}
+  - component: {fileID: 1071010783}
   m_Layer: 0
   m_Name: SpawnPoint_Player1
   m_TagString: Untagged
@@ -4130,6 +4149,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1071010783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1071010780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7424261d0fa064d1a904427fe10c6bc4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpawnPoint
+  playerId: 1
 --- !u!1001 &1103446278
 PrefabInstance:
   m_ObjectHideFlags: 0

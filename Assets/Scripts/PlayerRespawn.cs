@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class PlayerRespawn : MonoBehaviour
 {
@@ -17,6 +19,16 @@ public class PlayerRespawn : MonoBehaviour
         col = GetComponent<Collider2D>();
         if (spawnPoint == null)
             Debug.LogWarning("PlayerRespawn: spawnPoint not set. Assign your SpawnPoint transform.");
+    }
+    
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
     void Start()
@@ -53,6 +65,25 @@ public class PlayerRespawn : MonoBehaviour
         else
         {
             Debug.LogError("PlayerRespawn: No spawnPoint assigned.");
+        }
+    }
+    
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        SpawnPoint[] spawns = FindObjectsByType<SpawnPoint>(FindObjectsSortMode.None);
+        int id = GetComponent<PlayerIdentity>().playerId;
+
+        if (spawns.Length > 0)
+        {
+            foreach (var spawn in spawns)
+            {
+                if (spawn.playerId == id)
+                {
+                    spawnPoint = spawn.transform;
+                    Respawn();
+                    break;
+                }
+            }
         }
     }
 }
