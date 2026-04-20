@@ -1,11 +1,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerInputManager : MonoBehaviour
 {
     [SerializeField] private GameObject player1Prefab;
     [SerializeField] private GameObject player2Prefab;
+    
+    public TitleScreenUI titleScreenUI;
     
     private bool wasdJoined = false;
     private bool arrowsJoined = false;
@@ -20,6 +23,11 @@ public class PlayerInputManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (SceneManager.GetActiveScene().name != "TitleScreen")
+        {
+            return;
+        }
+        
         if (Keyboard.current == null) return;
 
         if (!wasdJoined && Keyboard.current.wKey.wasPressedThisFrame)
@@ -29,11 +37,13 @@ public class PlayerInputManager : MonoBehaviour
                 player1Joined = true;
                 var player = PlayerInput.Instantiate(player1Prefab,
                     controlScheme: "WASD", pairWithDevice: Keyboard.current);
+                titleScreenUI.ShowText(1);
             }
             else
             {
                 var player = PlayerInput.Instantiate(player2Prefab,
                     controlScheme: "WASD", pairWithDevice: Keyboard.current);
+                titleScreenUI.ShowText(2);
             }
             wasdJoined = true;
         }
@@ -45,11 +55,13 @@ public class PlayerInputManager : MonoBehaviour
                 player1Joined = true;
                 var player = PlayerInput.Instantiate(player1Prefab,
                     controlScheme: "Arrows", pairWithDevice: Keyboard.current);
+                titleScreenUI.ShowText(1);
             }
             else
             {
                 var player = PlayerInput.Instantiate(player2Prefab,
                     controlScheme: "Arrows", pairWithDevice: Keyboard.current);
+                titleScreenUI.ShowText(2);
             }
             arrowsJoined = true;
         }
@@ -64,12 +76,14 @@ public class PlayerInputManager : MonoBehaviour
                     joinedGamepads.Add(gamepad);
                     var player = PlayerInput.Instantiate(player1Prefab,
                         controlScheme: "Gamepad", pairWithDevice: gamepad);
+                    titleScreenUI.ShowText(1);
                 }
                 else
                 {
                     joinedGamepads.Add(gamepad);
                     var player = PlayerInput.Instantiate(player2Prefab,
                         controlScheme: "Gamepad", pairWithDevice: gamepad);
+                    titleScreenUI.ShowText(2);
                 }
             }
         }

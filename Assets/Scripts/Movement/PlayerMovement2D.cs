@@ -444,4 +444,43 @@ public class PlayerMovement2D : MonoBehaviour
     {
         wallDust.Play();
     }
+    
+    public void TempDisablePlayer()
+    {
+        // Disable input (important!)
+        var input = GetComponent<InputHandler>();
+        if (input != null) input.enabled = false;
+
+        // Optional: disable physics interactions
+        if (_rb != null)
+        {
+            _rb.linearVelocity = Vector2.zero;
+            _rb.simulated = false;
+        }
+
+        // Optional: hide visually
+        if (_sr != null)
+            _sr.enabled = false;
+        
+        GetComponentInChildren(typeof(SpriteRenderer)).GetComponent<SpriteRenderer>().enabled = false;
+    }
+
+    public void EnablePlayer()
+    {
+        var input = GetComponent<InputHandler>();
+        if (input != null) input.enabled = true;
+        
+        if (_rb != null)
+        {
+            _rb.simulated = true;
+            
+        }
+
+        if (_sr != null)
+        {
+            _sr.enabled = true;
+        }
+        
+        GetComponentInChildren(typeof(SpriteRenderer)).GetComponent<SpriteRenderer>().enabled = true;
+    }
 }

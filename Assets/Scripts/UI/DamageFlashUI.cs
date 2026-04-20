@@ -4,7 +4,9 @@ using System.Collections;
 
 public class DamageFlashUI : MonoBehaviour
 {
-    // Notice the 'static instance' is gone!
+    [Tooltip("Id of the player the flash is attached to")]
+    [Range(1, 2)]
+    public int playerId;
     
     [Header("Flash Settings")]
     public Image flashImage;                                 

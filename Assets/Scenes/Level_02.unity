@@ -1793,6 +1793,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d300095bbdc995c4597fa64b8c3fee46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DamageFlashUI
+  playerId: 2
   flashImage: {fileID: 844581102}
   flashColor: {r: 1, g: 0, b: 0, a: 0.5}
   fadeSpeed: 3
@@ -84890,6 +84891,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d300095bbdc995c4597fa64b8c3fee46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DamageFlashUI
+  playerId: 1
   flashImage: {fileID: 234419433}
   flashColor: {r: 1, g: 0, b: 0, a: 0.5}
   fadeSpeed: 3

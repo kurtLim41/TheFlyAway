@@ -75,7 +75,16 @@ public class PlayerRespawn : MonoBehaviour
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         SetSpawnPoint();
-        SetCameraFollow();
+        SetCameraDependencies();
+        SetScreenFlash();
+        
+        PlayerMovement2D movement = GetComponent<PlayerMovement2D>();
+        if (movement == null)
+        {
+            Debug.LogError("PlayerRespawn: PlayerMovement2D component not set.");
+        }
+        movement.EnablePlayer();
+        
     }
 
     private void SetSpawnPoint()
@@ -96,7 +105,7 @@ public class PlayerRespawn : MonoBehaviour
         }
     }
 
-    private void SetCameraFollow()
+    private void SetCameraDependencies()
     {
         CameraFollow2D[] cams = FindObjectsByType<CameraFollow2D>(FindObjectsSortMode.None);
 
@@ -107,6 +116,24 @@ public class PlayerRespawn : MonoBehaviour
                 if (cam.playerId == id)
                 {
                     cam.target = transform;
+                    myCameraShake = cam.GetComponent<CameraShake>();
+                    break;
+                }
+            }
+        }
+    }
+
+    private void SetScreenFlash()
+    {
+        DamageFlashUI[] flashes = FindObjectsByType<DamageFlashUI>(FindObjectsSortMode.None);
+
+        if (flashes.Length > 0)
+        {
+            foreach (var flash in flashes)
+            {
+                if (flash.playerId == id)
+                {
+                    myScreenFlash = flash;
                     break;
                 }
             }
