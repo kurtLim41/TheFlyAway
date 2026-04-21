@@ -42,14 +42,18 @@ public class MultiplayerFinishManager : MonoBehaviour
             p1Done = true;
             player1UI?.Show(t);
             FreezePlayer(playerRoot);
-            Destroy(playerRoot.gameObject);
+            DisablePlayer(playerRoot);
+            if (FindObjectsByType<PlayerIdentity>(FindObjectsInactive.Exclude, FindObjectsSortMode.None).Length <= 1)
+            {
+                p2Done = true;
+            }
         }
         else if (playerId == 2 && !p2Done)
         {
             p2Done = true;
             player2UI?.Show(t);
             FreezePlayer(playerRoot);
-            Destroy(playerRoot.gameObject);
+            DisablePlayer(playerRoot);
         }
 
         if (p1Done && p2Done && !_advancing)
@@ -75,5 +79,12 @@ public class MultiplayerFinishManager : MonoBehaviour
         
         var input = playerRoot.GetComponent<InputHandler>();
         if (input) input.enabled = false;
+    }
+
+    private void DisablePlayer(Transform playerRoot)
+    {
+        if (!playerRoot) return;
+        PlayerMovement2D movement = playerRoot.GetComponent<PlayerMovement2D>();
+        movement.TempDisablePlayer();
     }
 }

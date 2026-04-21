@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class PlayerRespawn : MonoBehaviour
 {
@@ -14,17 +16,28 @@ public class PlayerRespawn : MonoBehaviour
     private AudioSource myAudioSource;
     private Rigidbody2D rb;
     private Collider2D col;
+    
+    private int id;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         col = GetComponent<Collider2D>();
         myAudioSource = GetComponent<AudioSource>();
-
+        id = GetComponent<PlayerIdentity>().playerId;
+        
         if (spawnPoint == null)
-        {
-            Debug.LogWarning("PlayerRespawn: spawnPoint not set.");
-        }
+            Debug.LogWarning("PlayerRespawn: spawnPoint not set. Assign your SpawnPoint transform.");
+    }
+    
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
     void Start()
@@ -55,10 +68,13 @@ public class PlayerRespawn : MonoBehaviour
     IEnumerator RespawnRoutine()
     {
         if (col) col.enabled = false;
+
+        //zero velocity and teleport
         if (rb) rb.linearVelocity = Vector2.zero;
 
         Respawn();
 
+        //small delay to avoid double triggers
         yield return new WaitForSeconds(0.05f);
 
         if (col) col.enabled = true;
@@ -74,6 +90,74 @@ public class PlayerRespawn : MonoBehaviour
         else
         {
             Debug.LogError("PlayerRespawn: No spawnPoint assigned.");
+        }
+    }
+    
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        SetSpawnPoint();
+        SetCameraDependencies();
+        SetScreenFlash();
+        
+        PlayerMovement2D movement = GetComponent<PlayerMovement2D>();
+        if (movement == null)
+        {
+            Debug.LogError("PlayerRespawn: PlayerMovement2D component not set.");
+        }
+        movement.EnablePlayer();
+        
+    }
+
+    private void SetSpawnPoint()
+    {
+        SpawnPoint[] spawns = FindObjectsByType<SpawnPoint>(FindObjectsSortMode.None);
+        
+        if (spawns.Length > 0)
+        {
+            foreach (var spawn in spawns)
+            {
+                if (spawn.playerId == id)
+                {
+                    spawnPoint = spawn.transform;
+                    Respawn();
+                    break;
+                }
+            }
+        }
+    }
+
+    private void SetCameraDependencies()
+    {
+        CameraFollow2D[] cams = FindObjectsByType<CameraFollow2D>(FindObjectsSortMode.None);
+
+        if (cams.Length > 0)
+        {
+            foreach (var cam in cams)
+            {
+                if (cam.playerId == id)
+                {
+                    cam.target = transform;
+                    myCameraShake = cam.GetComponent<CameraShake>();
+                    break;
+                }
+            }
+        }
+    }
+
+    private void SetScreenFlash()
+    {
+        DamageFlashUI[] flashes = FindObjectsByType<DamageFlashUI>(FindObjectsSortMode.None);
+
+        if (flashes.Length > 0)
+        {
+            foreach (var flash in flashes)
+            {
+                if (flash.playerId == id)
+                {
+                    myScreenFlash = flash;
+                    break;
+                }
+            }
         }
     }
 }
