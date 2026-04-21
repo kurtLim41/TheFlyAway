@@ -5,13 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class PlayerRespawn : MonoBehaviour
 {
-    [Header("Spawn")]
+    [Header("Spawn Settings")]
     public Transform spawnPoint;
-        public DamageFlashUI myScreenFlash; 
-        public CameraShake myCameraShake; // <-- Add this new line!
-        
-    Rigidbody2D rb;
-    Collider2D col;
+
+    [Header("Juice & Effects")]
+    public DamageFlashUI myScreenFlash; 
+    public CameraShake myCameraShake;
+    public AudioClip deathSound;
+    
+    private AudioSource myAudioSource;
+    private Rigidbody2D rb;
+    private Collider2D col;
     
     private int id;
 
@@ -19,6 +23,7 @@ public class PlayerRespawn : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         col = GetComponent<Collider2D>();
+        myAudioSource = GetComponent<AudioSource>();
         id = GetComponent<PlayerIdentity>().playerId;
         
         if (spawnPoint == null)
@@ -42,6 +47,21 @@ public class PlayerRespawn : MonoBehaviour
 
     public void KillAndRespawn()
     {
+        if (myScreenFlash != null)
+        {
+            myScreenFlash.FlashScreen();
+        }
+
+        if (myCameraShake != null)
+        {
+            myCameraShake.TriggerShake(0.2f, 0.4f);
+        }
+
+        if (myAudioSource != null && deathSound != null)
+        {
+            myAudioSource.PlayOneShot(deathSound, 1.0f);
+        }
+
         StartCoroutine(RespawnRoutine());
     }
 
@@ -51,6 +71,7 @@ public class PlayerRespawn : MonoBehaviour
 
         //zero velocity and teleport
         if (rb) rb.linearVelocity = Vector2.zero;
+
         Respawn();
 
         //small delay to avoid double triggers
