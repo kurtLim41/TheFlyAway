@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class PauseScreenUI : MonoBehaviour
 {
-    [SerializeField] private GameObject panel;
+    [SerializeField] private GameObject mainPanel; // Renamed from 'panel' for clarity
+    [SerializeField] private GameObject mapPanel;
     
     void OnEnable()
     {
@@ -16,7 +17,8 @@ public class PauseScreenUI : MonoBehaviour
     
     void Start()
     {
-        panel.SetActive(false);
+        mainPanel.SetActive(false);
+        mapPanel.SetActive(false);
     }
 
     public void QuitGame()
@@ -28,9 +30,26 @@ public class PauseScreenUI : MonoBehaviour
     {
         GameFlow.I.AbortToTitle();
     }
+
+    public void OpenMap()
+    {
+        mainPanel.SetActive(false);
+        mapPanel.SetActive(true);
+    }
+
+    public void BackToPauseMenu()
+    {
+        mapPanel.SetActive(false);
+        mainPanel.SetActive(true);
+    }
     
     private void ToggleScreen(bool isPaused)
     {
-        panel.SetActive(isPaused);
+        mainPanel.SetActive(isPaused);
+        
+        if (!isPaused)
+        {
+            mapPanel.SetActive(false);
+        }
     }
 }

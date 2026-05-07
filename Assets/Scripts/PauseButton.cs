@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class PauseButton : MonoBehaviour
 {
+    [SerializeField] private PauseScreenUI pauseUI;
+
     public void Pause()
     {
         PauseManager.SetPaused(true);
@@ -11,5 +13,15 @@ public class PauseButton : MonoBehaviour
     public void Resume()
     {
         PauseManager.SetPaused(false);
+    }
+
+    public void OpenMap()
+    {
+        PauseManager.SetPaused(true);
+        
+        if (pauseUI != null)
+        {
+            pauseUI.OpenMap();
+        }
     }
 }
